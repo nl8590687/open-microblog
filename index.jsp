@@ -526,6 +526,33 @@
 							<div class="separator-2"></div>
 							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas nulla suscipit <br class="hidden-sm hidden-xs"> unde rerum mollitia dolorum.</p>
 							<!-- page-title end -->
+							
+							<%
+							
+							for(int i=0;i<3;i++)
+							{
+							%>
+							<div class="space-bottom"></div>
+							<div class="well">
+								<div class="testimonial clearfix">
+									<div class="testimonial-image">
+										<img src="images/testimonial-2.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
+									</div>
+									<div class="testimonial-body">
+										<h2 class="title">WoW<div class="testimonial-info-1">- John Doe</div></h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex eveniet, nihil repellat temporibus! Vitae veniam neque atque autem vel fugit aspernatur perferendis sunt, voluptatum debitis! Nemo aut, itaque officiis assumenda.</p>
+										
+										<img src="images/logo_red.png">
+										<i class="fa fa-heart-o pr-5"><a href="#"> 赞(2) </a></i>
+										<i class="fa fa-heart pr-5"><a href="#"> 取消赞(2) </a></i>
+										<i class="fa fa-comments-o pr-5"><a href="#"> 评论(2) </a></i>
+										<i class="fa fa-retweet pr-5"><a href="#"> 转发(2) </a></i>
+									</div>
+								</div>
+							</div>
+							
+							<%} 
+							%>
 
 							<!-- blogpost start -->
 							<article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
