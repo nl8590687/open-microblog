@@ -493,22 +493,6 @@
 			</header>
 			<!-- header end -->
 
-			<!-- page-intro start-->
-			<!-- ================ -->
-			<div class="page-intro">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<ol class="breadcrumb">
-								<li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
-								<li class="active">Blog</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- page-intro end -->
-
 			<!-- main-container start -->
 			<!-- ================ -->
 			<section class="main-container">
@@ -519,17 +503,16 @@
 						<!-- main start -->
 						<!-- ================ -->
 						<div class="main col-md-8">
-
-							<!-- page-title start -->
-							<!-- ================ -->
-							<h1 class="page-title">Blog</h1>
-							<div class="separator-2"></div>
-							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas nulla suscipit <br class="hidden-sm hidden-xs"> unde rerum mollitia dolorum.</p>
-							<!-- page-title end -->
 							
+							<form role="form">
+								<label>Message</label>
+								<textarea class="form-control" rows="3"></textarea>
+								<button type="submit" class="btn btn-default">Sign in</button>
+							</form>
+							<div class="separator-2"></div>
 							<%
 							
-							for(int i=0;i<3;i++)
+							for(int i=0;i<10;i++)
 							{
 							%>
 							<div class="space-bottom"></div>
@@ -539,14 +522,17 @@
 										<img src="images/testimonial-2.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
 									</div>
 									<div class="testimonial-body">
-										<h2 class="title">WoW<div class="testimonial-info-1">- John Doe</div></h2>
+										<h4 class="title">UserName</h4>
+										<h6>@userid</h6>
+										<h5><div class="testimonial-info-1">2018-01-01 00:00:00</div></h5>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex eveniet, nihil repellat temporibus! Vitae veniam neque atque autem vel fugit aspernatur perferendis sunt, voluptatum debitis! Nemo aut, itaque officiis assumenda.</p>
 										
 										<img src="images/logo_red.png">
 										<i class="fa fa-heart-o pr-5"><a href="#"> 赞(2) </a></i>
-										<i class="fa fa-heart pr-5"><a href="#"> 取消赞(2) </a></i>
+										<!--<i class="fa fa-heart pr-5"><a href="#"> 取消赞(2) </a></i>-->
 										<i class="fa fa-comments-o pr-5"><a href="#"> 评论(2) </a></i>
 										<i class="fa fa-retweet pr-5"><a href="#"> 转发(2) </a></i>
+										<!--<i class="fa fa-trash-o pr-5"><a href="#"> 删除 </a></i>-->
 									</div>
 								</div>
 							</div>
@@ -554,154 +540,7 @@
 							<%} 
 							%>
 
-							<!-- blogpost start -->
-							<article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-								<div class="overlay-container">
-									<img src="images/blog-1.jpg" alt="">
-									<div class="overlay">
-										<div class="overlay-links">
-											<a href="blog-post.html"><i class="fa fa-link"></i></a>
-											<a href="images/blog-1.jpg" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-								<div class="blogpost-body">
-									<div class="post-info">
-										<span class="day">12</span>
-										<span class="month">Sept 2014</span>
-									</div>
-									<div class="blogpost-content">
-										<header>
-											<h2 class="title"><a href="blog-post.html">Blogpost with image</a></h2>
-											<div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">John Doe</a></div>
-										</header>
-										<p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-									</div>
-								</div>
-								<footer class="clearfix">
-									<ul class="links pull-left">
-										<li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li> 
-										<li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
-									</ul>
-									<a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
-								</footer>
-							</article>
-							<!-- blogpost end -->
-
-							<!-- blogpost start -->
-							<article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-								<div class="embed-responsive embed-responsive-16by9">
-									<iframe class="embed-responsive-item"></iframe>
-								</div>
-								<div class="blogpost-body">
-									<div class="post-info">
-										<span class="day">11</span>
-										<span class="month">Sept 2014</span>
-									</div>
-									<div class="blogpost-content">
-										<header>
-											<h2 class="title"><a href="blog-post.html">Blogpost with embedded youtube video</a></h2>
-											<div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">John Doe</a></div>
-										</header>
-										<p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-									</div>
-								</div>
-								<footer class="clearfix">
-									<ul class="links pull-left">
-										<li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li> 
-										<li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
-									</ul>
-									<a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
-								</footer>
-							</article>
-							<!-- blogpost end -->
-
-							<!-- blogpost start -->
-							<article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-								<div class="audio-wrapper">
-									<iframe height="166" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/106329682&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-								</div>
-								<div class="blogpost-body">
-									<div class="post-info">
-										<span class="day">10</span>
-										<span class="month">Sept 2014</span>
-									</div>
-									<div class="blogpost-content">
-										<header>
-											<h2 class="title"><a href="blog-post.html">Audio post</a></h2>
-											<div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">John Doe</a></div>
-										</header>
-										<p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-									</div>
-								</div>
-								<footer class="clearfix">
-									<ul class="links pull-left">
-										<li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li> 
-										<li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
-									</ul>
-									<a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
-								</footer>
-							</article>
-							<!-- blogpost end -->
-
-							<!-- blogpost start -->
-							<article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-								<div class="blogpost-body">
-									<div class="post-info">
-										<span class="day">09</span>
-										<span class="month">Sept 2014</span>
-									</div>
-									<div class="blogpost-content">
-										<header>
-											<h2 class="title"><a href="blog-post.html">Text post</a></h2>
-											<div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">John Doe</a></div>
-										</header>
-										<p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-									</div>
-								</div>
-								<footer class="clearfix">
-									<ul class="links pull-left">
-										<li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li> 
-										<li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
-									</ul>
-									<a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
-								</footer>
-							</article>
-							<!-- blogpost end -->
-
-							<!-- blogpost start -->
-							<article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-								<div class="overlay-container">
-									<img src="images/blog-2.jpg" alt="">
-									<div class="overlay">
-										<div class="overlay-links">
-											<a href="blog-post.html"><i class="fa fa-link"></i></a>
-											<a href="images/blog-2.jpg" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-								<div class="blogpost-body">
-									<div class="post-info">
-										<span class="day">01</span>
-										<span class="month">Sept 2014</span>
-									</div>
-									<div class="blogpost-content">
-										<header>
-											<h2 class="title"><a href="blog-post.html">Lorem ipsum dolor sit amet aecenas ullamcorper</a></h2>
-											<div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">John Doe</a></div>
-										</header>
-										<p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
-									</div>
-								</div>
-								<footer class="clearfix">
-									<ul class="links pull-left">
-										<li><i class="fa fa-comment-o pr-5"></i> <a href="#">22 comments</a> |</li> 
-										<li><i class="fa fa-tags pr-5"></i> <a href="#">tag 1</a>, <a href="#">tag 2</a>, <a href="#">long tag 3</a> </li>
-									</ul>
-									<a class="pull-right link" href="blog-post.html"><span>Read more</span></a>
-								</footer>
-							</article>
-							<!-- blogpost end -->
+							
 
 							<!-- pagination start -->
 							<ul class="pagination">
@@ -892,49 +731,7 @@
 			</section>
 			<!-- main-container end -->
 
-			<!-- section start -->
-			<!-- ================ -->
-			<div class="section gray-bg text-muted footer-top clearfix">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="owl-carousel clients">
-								<div class="client">
-									<a href="#"><img src="images/client-1.png" alt=""></a>
-								</div>
-								<div class="client">
-									<a href="#"><img src="images/client-2.png" alt=""></a>
-								</div>
-								<div class="client">
-									<a href="#"><img src="images/client-3.png" alt=""></a>
-								</div>
-								<div class="client">
-									<a href="#"><img src="images/client-4.png" alt=""></a>
-								</div>
-								<div class="client">
-									<a href="#"><img src="images/client-5.png" alt=""></a>
-								</div>
-								<div class="client">
-									<a href="#"><img src="images/client-6.png" alt=""></a>
-								</div>
-								<div class="client">
-									<a href="#"><img src="images/client-7.png" alt=""></a>
-								</div>
-								<div class="client">
-									<a href="#"><img src="images/client-8.png" alt=""></a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<blockquote class="inline">
-								<p class="margin-clear">Design is not just what it looks like and feels like. Design is how it works.</p>	
-								<footer><cite title="Source Title">Steve Jobs </cite></footer>
-							</blockquote>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- section end -->
+			
 
 			<!-- footer start (Add "light" class to #footer in order to enable light footer) -->
 			<!-- ================ -->
