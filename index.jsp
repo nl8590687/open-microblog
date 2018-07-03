@@ -259,7 +259,7 @@
 											<div class="collapse navbar-collapse" id="navbar-collapse-1">
 												<ul class="nav navbar-nav navbar-right">
 													<li class="dropdown">
-														<a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+														<a href="index.html" class="dropdown-toggle" data-toggle="dropdown">主页</a>
 														<ul class="dropdown-menu">
 															<li><a href="index.html">Home - Default</a></li>
 															<li><a href="index-2.html">Home - 2</a></li>
@@ -273,7 +273,7 @@
 													</li>
 													<!-- mega-menu start -->
 													<li class="dropdown mega-menu">
-														<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">通知</a>
 														<ul class="dropdown-menu">
 															<li>
 																<div class="row">
@@ -325,7 +325,7 @@
 													</li>
 													<!-- mega-menu end -->
 													<li class="dropdown">
-														<a href="#" class="dropdown-toggle" data-toggle="dropdown">Features</a>
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">私信</a>
 														<ul class="dropdown-menu">
 															<li><a href="features-typography.html">Typography</a></li>
 															<li class="dropdown">
@@ -505,9 +505,9 @@
 						<div class="main col-md-8">
 							
 							<form role="form">
-								<label>Message</label>
+								<label>请输入要发布的微博内容</label>
 								<textarea class="form-control" rows="3"></textarea>
-								<button type="submit" class="btn btn-default">Sign in</button>
+								<button type="submit" class="btn btn-default">发布</button>
 							</form>
 							<div class="separator-2"></div>
 							<%
@@ -532,6 +532,7 @@
 										<!--<i class="fa fa-heart pr-5"><a href="#"> 取消赞(2) </a></i>-->
 										<i class="fa fa-comments-o pr-5"><a href="#"> 评论(2) </a></i>
 										<i class="fa fa-retweet pr-5"><a href="#"> 转发(2) </a></i>
+										<i class="fa fa-envelope-o pr-5"><a href="#"> 私信 </a></i>
 										<!--<i class="fa fa-trash-o pr-5"><a href="#"> 删除 </a></i>-->
 									</div>
 								</div>
@@ -560,160 +561,51 @@
 						<!-- sidebar start -->
 						<aside class="col-md-3 col-md-offset-1">
 							<div class="sidebar">
+								
 								<div class="block clearfix">
-									<h3 class="title">Sidebar menu</h3>
+									<div class="col-md-12">
+										<div class="testimonial clearfix">
+											<img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
+											<div class="testimonial-body">
+												<h2 class="title">Lorem Ipsum!</h2>
+												<p>Ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, nulla quae dolores, unde eos laboriosam ea tenetur omnis..</p>
+												<div class="testimonial-info-1">- Anne Doe</div>
+												<div class="testimonial-info-2">By Company</div>
+												<hr>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="block clearfix">
+									<h3 class="title">当前热搜</h3>
 									<div class="separator"></div>
 									<nav>
 										<ul class="nav nav-pills nav-stacked">
-											<li><a href="index.html">Home</a></li>
-											<li class="active"><a href="blog-right-sidebar.html">Blog</a></li>
-											<li><a href="portfolio-3col.html">Portfolio</a></li>
-											<li><a href="page-about.html">About</a></li>
-											<li><a href="page-contact.html">Contact</a></li>
+											<li><a href="#">#SoftwareDevelopment</a></li>
+											<li><a href="#">#ArtificialItenlengence</a></li>
+											<li><a href="#">#软件开发</a></li>
+											<li><a href="#">#人工智能</a></li>
+											<li><a href="#">#技术流</a></li>
+											<% for(int i =0;i<3;i++)
+											{
+											%>
+											<li><a href="#">#测试内容</a></li>
+											<%}
+											%>
 										</ul>
 									</nav>
 								</div>
+								
+								
 								<div class="block clearfix">
-									<h3 class="title">Latest tweets</h3>
+									<h3 class="title">广告位待售</h3>
 									<div class="separator"></div>
-									<ul class="tweets">
-										<li>
-											<i class="fa fa-twitter"></i>
-											<p><a href="#">@lorem</a> ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, aliquid, et molestias nesciunt <a href="#">http://t.co/dzLEYGeEH9</a>.</p><span>16 hours ago</span>
-										</li>
-										<li>
-											<i class="fa fa-twitter"></i>
-											<p><a href="#">@lorem</a> ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, aliquid, et molestias nesciunt <a href="#">http://t.co/dzLEYGeEH9</a>.</p><span>16 hours ago</span>
-										</li>
-									</ul>
+									<p>这里可用来作为广告展示，也可以用来显示关于信息</p>
 								</div>
-								<div class="block clearfix">
-									<h3 class="title">Featured Post</h3>
-									<div class="separator"></div>
-									<div class="image-box">
-										<div class="overlay-container">
-											<img src="images/blog-sidebar.jpg" alt="">
-											<div class="overlay">
-												<div class="overlay-links">
-													<a href="blog-post.html"><i class="fa fa-link"></i></a>
-													<a href="images/blog-sidebar.jpg" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-										</div>
-										<div class="image-box-body">
-											<h3 class="title"><a href="blog-post.html">Post Title</a></h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-											<a href="blog-post.html" class="link"><span>Read More</span></a>
-										</div>
-									</div>
-								</div>
-								<div class="block clearfix">
-									<h3 class="title">Text Sample</h3>
-									<div class="separator"></div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, nemo, necessitatibus, expedita voluptate esse ipsam aliquid blanditiis maxime sequi veniam suscipit atque sapiente cum voluptatum quos mollitia laborum? Esse, officia!</p>
-								</div>
-								<div class="block clearfix">
-									<h3 class="title">Testimonial</h3>
-									<div class="separator"></div>
-									<blockquote class="margin-clear">
-										<p>Design is not just what it looks like and feels like. Design is how it works.</p>	
-										<footer><cite title="Source Title">Steve Jobs </cite></footer>
-									</blockquote>
-									<blockquote class="margin-clear">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem.</p>	
-										<footer><cite title="Source Title">Steve Doe </cite></footer>
-									</blockquote>
-								</div> 
-								<div class="block clearfix">
-									<h3 class="title">Portfolio</h3>
-									<div class="separator"></div>
-									<div class="gallery row">
-										<div class="gallery-item col-xs-4">
-											<div class="overlay-container">
-												<img src="images/gallery-1.jpg" alt="">
-												<a href="portfolio-item.html" class="overlay small">
-													<i class="fa fa-link"></i>
-												</a>
-											</div>
-										</div>
-										<div class="gallery-item col-xs-4">
-											<div class="overlay-container">
-												<img src="images/gallery-2.jpg" alt="">
-												<a href="portfolio-item.html" class="overlay small">
-													<i class="fa fa-link"></i>
-												</a>
-											</div>
-										</div>
-										<div class="gallery-item col-xs-4">
-											<div class="overlay-container">
-												<img src="images/gallery-3.jpg" alt="">
-												<a href="portfolio-item.html" class="overlay small">
-													<i class="fa fa-link"></i>
-												</a>
-											</div>
-										</div>
-										<div class="gallery-item col-xs-4">
-											<div class="overlay-container">
-												<img src="images/gallery-4.jpg" alt="">
-												<a href="portfolio-item.html" class="overlay small">
-													<i class="fa fa-link"></i>
-												</a>
-											</div>
-										</div>
-										<div class="gallery-item col-xs-4">
-											<div class="overlay-container">
-												<img src="images/gallery-5.jpg" alt="">
-												<a href="portfolio-item.html" class="overlay small">
-													<i class="fa fa-link"></i>
-												</a>
-											</div>
-										</div>
-										<div class="gallery-item col-xs-4">
-											<div class="overlay-container">
-												<img src="images/gallery-6.jpg" alt="">
-												<a href="portfolio-item.html" class="overlay small">
-													<i class="fa fa-link"></i>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="block clearfix">
-									<h3 class="title">Tags</h3>
-									<div class="separator"></div>
-									<div class="tags-cloud">
-										<div class="tag">
-											<a href="#">energy</a>
-										</div>
-										<div class="tag">
-											<a href="#">business</a>
-										</div>
-										<div class="tag">
-											<a href="#">food</a>
-										</div>
-										<div class="tag">
-											<a href="#">fashion</a>
-										</div>
-										<div class="tag">
-											<a href="#">finance</a>
-										</div>
-										<div class="tag">
-											<a href="#">culture</a>
-										</div>
-										<div class="tag">
-											<a href="#">health</a>
-										</div>
-										<div class="tag">
-											<a href="#">sports</a>
-										</div>
-										<div class="tag">
-											<a href="#">life style</a>
-										</div>
-										<div class="tag">
-											<a href="#">books</a>
-										</div>
-									</div>
-								</div>
+								
+								
+								
 								<div class="block clearfix">
 									<form role="search">
 										<div class="form-group has-feedback">
