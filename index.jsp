@@ -258,7 +258,7 @@
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse" id="navbar-collapse-1">
 												<ul class="nav navbar-nav navbar-right">
-													<li class="dropdown">
+													<li class="dropdown active">
 														<a href="index.html" class="dropdown-toggle" data-toggle="dropdown">主页</a>
 														<ul class="dropdown-menu">
 															<li><a href="index.html">Home - Default</a></li>
@@ -368,7 +368,7 @@
 													</li>
 													<!-- mega-menu start -->
 													<li class="dropdown mega-menu">
-														<a href="#" class="dropdown-toggle" data-toggle="dropdown">Components</a>
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">个人管理</a>
 														<ul class="dropdown-menu">
 															<li>
 																<div class="row">
@@ -567,14 +567,22 @@
 										<div class="testimonial clearfix">
 											<img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
 											<div class="testimonial-body">
-												<h2 class="title">Lorem Ipsum!</h2>
-												<p>Ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, nulla quae dolores, unde eos laboriosam ea tenetur omnis..</p>
-												<div class="testimonial-info-1">- Anne Doe</div>
-												<div class="testimonial-info-2">By Company</div>
+												<h2 class="title">UserName</h2>
+												<div class="testimonial-info-1">@userid</div>
+												<div class="testimonial-info-2">微博 12 关注 6 粉丝8</div>
 												<hr>
 											</div>
 										</div>
 									</div>
+								</div>
+								
+								<div class="block clearfix">
+									<form role="search">
+										<div class="form-group has-feedback">
+											<input type="text" class="form-control" placeholder="Search">
+											<i class="fa fa-search form-control-feedback"></i>
+										</div>
+									</form>
 								</div>
 								
 								<div class="block clearfix">
@@ -599,6 +607,11 @@
 								
 								
 								<div class="block clearfix">
+									<!--<h3 class="title">广告位待售</h3>-->
+									<div class="separator"></div>
+									<p>Copyright © 2018.Open-MicroBlog All rights reserved.</p>
+								</div>
+								<div class="block clearfix">
 									<h3 class="title">广告位待售</h3>
 									<div class="separator"></div>
 									<p>这里可用来作为广告展示，也可以用来显示关于信息</p>
@@ -606,14 +619,6 @@
 								
 								
 								
-								<div class="block clearfix">
-									<form role="search">
-										<div class="form-group has-feedback">
-											<input type="text" class="form-control" placeholder="Search">
-											<i class="fa fa-search form-control-feedback"></i>
-										</div>
-									</form>
-								</div>
 							</div>
 						</aside>
 						<!-- sidebar end -->
