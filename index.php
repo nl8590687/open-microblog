@@ -1,6 +1,7 @@
 
 <?php
 require 'includes/sqlmng.php';
+$weburl='weibo_ailemon_wang';
 
 $con = mysqli_connect($host,$username,$pswd);
 mysqli_set_charset($con, 'utf8');
@@ -9,14 +10,26 @@ if (!$con)
   die('Could not connect: ' . mysqli_error());
 }
 
-//选取数据库 cremunity
+//选取数据库 open_microblog
 mysqli_select_db($con,"open_microblog");
 
-$islogin = true;
+//$islogin = true;
 
+$islogin = False;
 
+$uPwd='';
 $username = "UserName";
 $userid = "userid";
+
+// 如果cookie存在，那么用户已经登陆
+if (!empty($_COOKIE[$weburl.'_userid'])&&!empty($_COOKIE[$weburl.'_password']))
+{
+	$userid=$_COOKIE[$weburl.'_userid'];
+	$uPwd=$_COOKIE[$weburl.'_password'];
+	
+	$islogin = True;
+}
+
 
 $count_weibo = 16;
 $count_following = 9;
@@ -153,8 +166,8 @@ $count_follower = 12;
 											<li>
 												<form class="login-form" id="dw__login" action="login.jsp" method="post" accept-charset="utf-8">
 													<div class="form-group has-feedback">
-														<label class="control-label">Username</label>
-														<input id="unamebox" name="uName" type="text" class="form-control" placeholder="">
+														<label class="control-label">UserID</label>
+														<input id="uidbox" name="uID" type="text" class="form-control" placeholder="">
 														<i class="fa fa-user form-control-feedback"></i>
 													</div>
 													<div class="form-group has-feedback">
@@ -164,7 +177,7 @@ $count_follower = 12;
 													</div>
 													<button id="bt_login" type="submit" class="btn btn-group btn-dark btn-sm" onclick="func_login()">Log In</button>
 													<span>or</span>
-													<button type="button" class="btn btn-group btn-default btn-sm" onclick="location.replace (\'signup.jsp\')">Sing Up</button>
+													<button type="button" class="btn btn-group btn-default btn-sm" onclick="location.replace (\'signup.php\')">Sing Up</button>
 													<ul>
 														<li><a href="#">Forgot your password?</a></li>
 													</ul>
@@ -605,7 +618,7 @@ $count_follower = 12;
 											<img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
 											<div class="testimonial-body">
 												<h2 class="title"><?php $username ?></h2>
-												<div class="testimonial-info-1">@<?php $userid ?></div>
+												<div class="testimonial-info-1">@<?php echo $userid ?></div>
 												<div class="testimonial-info-2">微博 <?php echo $count_weibo ?> 关注 <?php echo $count_following ?> 粉丝 <?php echo $count_follower ?></div>
 												<hr>
 											</div>
