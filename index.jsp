@@ -5,8 +5,8 @@
 boolean islogin = true;
 
 
-string username = "username";
-string userid = "userid";
+String username = "UserName";
+String userid = "userid";
 
 int count_weibo = 16;
 int count_following = 9;
@@ -518,10 +518,10 @@ int count_follower = 12;
 						<!-- ================ -->
 						<div class="main col-md-8">
 							
-							<form role="form">
+							<form role="form" id="dw_post" action="post.jsp" method="post" accept-charset="utf-8">
 								<label>请输入要发布的微博内容</label>
-								<textarea class="form-control" rows="3"></textarea>
-								<button type="submit" class="btn btn-default">发布</button>
+								<textarea id="textarea_weibo" name="weibo_content" class="form-control" rows="3"></textarea>
+								<button id="submit_weibo" type="submit" class="btn btn-default">发布</button>
 							</form>
 							<div class="separator-2"></div>
 							<%
