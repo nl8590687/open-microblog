@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%
+
+boolean islogin = true;
+
+
+string username = "username";
+string userid = "userid";
+
+int count_weibo = 16;
+int count_following = 9;
+int count_follower = 12;
+
+%>
+
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
@@ -123,18 +137,18 @@
 										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login</button>
 										<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
 											<li>
-												<form class="login-form">
+												<form class="login-form" id="dw__login" action="login.jsp" method="post" accept-charset="utf-8">
 													<div class="form-group has-feedback">
 														<label class="control-label">Username</label>
-														<input type="text" class="form-control" placeholder="">
+														<input id="unamebox" name="uName" type="text" class="form-control" placeholder="">
 														<i class="fa fa-user form-control-feedback"></i>
 													</div>
 													<div class="form-group has-feedback">
 														<label class="control-label">Password</label>
-														<input type="password" class="form-control" placeholder="">
+														<input id="pswdbox" name="uPwd" type="password" class="form-control" placeholder="">
 														<i class="fa fa-lock form-control-feedback"></i>
 													</div>
-													<button type="submit" class="btn btn-group btn-dark btn-sm">Log In</button>
+													<button id="bt_login" type="submit" class="btn btn-group btn-dark btn-sm" onclick="func_login()">Log In</button>
 													<span>or</span>
 													<button type="submit" class="btn btn-group btn-default btn-sm">Sing Up</button>
 													<ul>
@@ -567,9 +581,9 @@
 										<div class="testimonial clearfix">
 											<img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
 											<div class="testimonial-body">
-												<h2 class="title">UserName</h2>
-												<div class="testimonial-info-1">@userid</div>
-												<div class="testimonial-info-2">微博 12 关注 6 粉丝 8</div>
+												<h2 class="title"><%= username %></h2>
+												<div class="testimonial-info-1">@<%= userid %></div>
+												<div class="testimonial-info-2">微博 <%= count_weibo %> 关注 <%= count_following %> 粉丝 <%= count_follower %></div>
 												<hr>
 											</div>
 										</div>
@@ -668,6 +682,16 @@
 
 		<!-- Custom Scripts -->
 		<script type="text/javascript" src="js/custom.js"></script>
-
+		<script src="js/md5.js"></script>
+		<script>
+			function func_login()
+			{
+				var input_pswdbox = document.getElementById(\'pswdbox\')
+				var passwd = input_pswdbox.value
+				var passwd_md5 = MD5(passwd)
+				input_pswdbox.value = passwd_md5
+			}
+		</script>
+		
 	</body>
 </html>
