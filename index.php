@@ -1,18 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
+<?php
+require 'includes/sqlmng.php';
 
-boolean islogin = true;
+$con = mysqli_connect($host,$username,$pswd);
+mysqli_set_charset($con, 'utf8');
+if (!$con)
+{
+  die('Could not connect: ' . mysqli_error());
+}
+
+//选取数据库 cremunity
+mysqli_select_db($con,"open_microblog");
+
+$islogin = true;
 
 
-String username = "UserName";
-String userid = "userid";
+$username = "UserName";
+$userid = "userid";
 
-int count_weibo = 16;
-int count_following = 9;
-int count_follower = 12;
+$count_weibo = 16;
+$count_following = 9;
+$count_follower = 12;
 
-%>
+?>
 
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -133,6 +143,10 @@ int count_follower = 12;
 											</li>
 										</ul>
 									</div>
+									<?php
+									if($islogin==true)
+									{
+									?>
 									<div class="btn-group dropdown">
 										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login</button>
 										<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
@@ -165,8 +179,13 @@ int count_follower = 12;
 											</li>
 										</ul>
 									</div>
+									<?php
+									}
+									else
+									{
+									?>
 									<div class="btn-group dropdown">
-										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> Cart (8)</button>
+										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Cart (8)</button>
 										<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
 											<li>
 												<table class="table table-hover">
@@ -201,11 +220,14 @@ int count_follower = 12;
 												</table>
 												<div class="panel-body text-right">	
 												<a href="shop-cart.html" class="btn btn-group btn-default btn-sm">View Cart</a>
-												<a href="shop-checkout.html" class="btn btn-group btn-default btn-sm">Checkout</a>
+												<a href="logout.php" class="btn btn-group btn-default btn-sm">注销登录</a>
 												</div>
 											</li>
 										</ul>
 									</div>
+									<?php
+									}
+									?>
 
 								</div>
 								<!--  header top dropdowns end -->
@@ -524,11 +546,11 @@ int count_follower = 12;
 								<button id="submit_weibo" type="submit" class="btn btn-default">发布</button>
 							</form>
 							<div class="separator-2"></div>
-							<%
+							<?php
 							
-							for(int i=0;i<10;i++)
+							for($i=0;$i<10;$i++)
 							{
-							%>
+							?>
 							<div class="space-bottom"></div>
 							<div class="well">
 								<div class="testimonial clearfix">
@@ -552,8 +574,9 @@ int count_follower = 12;
 								</div>
 							</div>
 							
-							<%} 
-							%>
+							<?php
+							} 
+							?>
 
 							
 
@@ -581,9 +604,9 @@ int count_follower = 12;
 										<div class="testimonial clearfix">
 											<img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
 											<div class="testimonial-body">
-												<h2 class="title"><%= username %></h2>
-												<div class="testimonial-info-1">@<%= userid %></div>
-												<div class="testimonial-info-2">微博 <%= count_weibo %> 关注 <%= count_following %> 粉丝 <%= count_follower %></div>
+												<h2 class="title"><?php $username ?></h2>
+												<div class="testimonial-info-1">@<?php $userid ?></div>
+												<div class="testimonial-info-2">微博 <?php echo $count_weibo ?> 关注 <?php echo $count_following ?> 粉丝 <?php echo $count_follower ?></div>
 												<hr>
 											</div>
 										</div>
@@ -609,12 +632,13 @@ int count_follower = 12;
 											<li><a href="#">#软件开发</a></li>
 											<li><a href="#">#人工智能</a></li>
 											<li><a href="#">#技术流</a></li>
-											<% for(int i =0;i<3;i++)
+											<?php for($i =0;$i<3;$i++)
 											{
-											%>
+											?>
 											<li><a href="#">#测试内容</a></li>
-											<%}
-											%>
+											<?php
+											}
+											?>
 										</ul>
 									</nav>
 								</div>
@@ -695,3 +719,6 @@ int count_follower = 12;
 		
 	</body>
 </html>
+<?php
+mysqli_close($con);
+?>
