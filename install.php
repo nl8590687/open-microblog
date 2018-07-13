@@ -129,7 +129,7 @@ else
 
 //添加一个初始用户，管理员 初始密码12345
 $sql = "
-INSERT INTO USERINFO(USERID,USERNAME,PASSWORD) VALUES('admin','admin_weibo','E738729A658A77D10E4F01BE9B9434B8');
+INSERT INTO USERINFO(USERID,USERNAME,PASSWORD) VALUES('admin','admin_weibo','A3BB16EBE1F003DC414C4F37B74AF755');
 ";
 $r = mysqli_query($con,$sql);
 if ($r)
@@ -169,7 +169,19 @@ else
 	echo '失败';
 }
 
-
+//添加一个初始的用户关注
+$sql = "
+INSERT INTO FOLLOWS VALUES ('admin','admin');
+";
+$r = mysqli_query($con,$sql);
+if ($r)
+{
+	echo '成功';
+}
+else
+{
+	echo '失败';
+}
 
 
 mysqli_close($con);

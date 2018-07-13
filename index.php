@@ -215,7 +215,7 @@ if($islogin==True)
 													</div>
 													<button id="bt_login" type="submit" class="btn btn-group btn-dark btn-sm" onclick="func_login()">Log In</button>
 													<span>or</span>
-													<button type="button" class="btn btn-group btn-default btn-sm" onclick="location.replace (\'signup.php\')">Sing Up</button>
+													<button type="button" class="btn btn-group btn-default btn-sm" onclick="location.replace ('signup.php')">Sing Up</button>
 													<ul>
 														<li><a href="#">Forgot your password?</a></li>
 													</ul>
@@ -237,44 +237,15 @@ if($islogin==True)
 									?>
 									<div class="btn-group dropdown">
 										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $username ?></button>
-										<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
+										<!--<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
 											<li>
-												<table class="table table-hover">
-													<thead>
-														<tr>
-															<th class="quantity">QTY</th>
-															<th class="product">Product</th>
-															<th class="amount">Subtotal</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="quantity">2 x</td>
-															<td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-															<td class="amount">$199.00</td>
-														</tr>
-														<tr>
-															<td class="quantity">3 x</td>
-															<td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-															<td class="amount">$299.00</td>
-														</tr>
-														<tr>
-															<td class="quantity">3 x</td>
-															<td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-															<td class="amount">$1499.00</td>
-														</tr>
-														<tr>
-															<td class="total-quantity" colspan="2">Total 8 Items</td>
-															<td class="total-amount">$1997.00</td>
-														</tr>
-													</tbody>
-												</table>
+												
 												<div class="panel-body text-right">	
-												<a href="shop-cart.html" class="btn btn-group btn-default btn-sm">View Cart</a>
+												
 												<a href="logout.php" class="btn btn-group btn-default btn-sm">注销登录</a>
 												</div>
 											</li>
-										</ul>
+										</ul>-->
 									</div>
 									<?php
 									}
@@ -345,222 +316,48 @@ if($islogin==True)
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse" id="navbar-collapse-1">
 												<ul class="nav navbar-nav navbar-right">
-													<li class="dropdown active">
-														<a href="index.html" class="dropdown-toggle" data-toggle="dropdown">主页</a>
-														<ul class="dropdown-menu">
-															<li><a href="index.html">Home - Default</a></li>
-															<li><a href="index-2.html">Home - 2</a></li>
-															<li><a href="index-3.html">Home - 3</a></li>
-															<li><a href="index-4.html">Home - 4</a></li>
-															<li><a href="index-5.html">Home - 5</a></li>
-															<li><a href="index-one-page.html">One Page Version</a></li>
-															<li><a href="index-boxed-slideshow.html">Home - Boxed Slider</a></li>
-															<li><a href="index-no-slideshow.html">Home - Without Slider</a></li>
-														</ul>
+													<li class="active">
+														<a href="." class="dropdown-toggle">主页</a>
+														
 													</li>
-													<!-- mega-menu start -->
-													<li class="dropdown mega-menu">
-														<a href="#" class="dropdown-toggle" data-toggle="dropdown">通知</a>
-														<ul class="dropdown-menu">
-															<li>
-																<div class="row">
-																	<div class="col-lg-4 col-md-3 hidden-sm">
-																		<h4>Premium HTML5 Template</h4>
-																		<p>iDea is perfectly suitable for corporate, business and company webpages.</p>
-																		<img src="images/section-image-3.png" alt="iDea">
-																	</div>
-																	<div class="col-lg-8 col-md-9">
-																		<h4>Pages</h4>
-																		<div class="row">
-																			<div class="col-sm-4">
-																				<div class="divider"></div>
-																				<ul class="menu">
-																					<li><a href="page-about.html"><i class="icon-right-open"></i>About Us</a></li>
-																					<li><a href="page-about-2.html"><i class="icon-right-open"></i>About Us 2</a></li>
-																					<li><a href="page-about-3.html"><i class="icon-right-open"></i>About Us 3</a></li>
-																					<li><a href="page-about-me.html"><i class="icon-right-open"></i>About Me</a></li>
-																					<li><a href="page-team.html"><i class="icon-right-open"></i>Our Team - Options</a></li>
-																					<li><a href="page-services.html"><i class="icon-right-open"></i>Services</a></li>
-																				</ul>
-																			</div>
-																			<div class="col-sm-4">
-																				<div class="divider"></div>
-																				<ul class="menu">
-																					<li><a href="page-contact.html"><i class="icon-right-open"></i>Contact</a></li>
-																					<li><a href="page-contact-2.html"><i class="icon-right-open"></i>Contact 2</a></li>
-																					<li><a href="page-coming-soon.html"><i class="icon-right-open"></i>Coming Soon Page</a></li>
-																					<li><a href="page-404.html"><i class="icon-right-open"></i>404 error</a></li>
-																					<li><a href="page-faq.html"><i class="icon-right-open"></i>FAQ page</a></li>
-																					<li><a href="page-affix-sidebar.html"><i class="icon-right-open"></i>Sidebar - Affix Menu</a></li>
-																				</ul>
-																			</div>
-																			<div class="col-sm-4">
-																				<div class="divider"></div>
-																				<ul class="menu">
-																					<li><a href="page-left-sidebar.html"><i class="icon-right-open"></i>Left Sidebar</a></li>
-																					<li><a href="page-right-sidebar.html"><i class="icon-right-open"></i>Right Sidebar</a></li>
-																					<li><a href="page-two-sidebars.html"><i class="icon-right-open"></i>Two Sidebars</a></li>
-																					<li><a href="page-no-sidebar.html"><i class="icon-right-open"></i>No Sidebars</a></li>
-																					<li><a href="page-sitemap.html"><i class="icon-right-open"></i>Sitemap</a></li>
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</li>
-														</ul>
+													<?php
+													if($islogin==True){
+													?>
+													<!-- menu start -->
+													<li>
+														<a href="" class="dropdown-toggle">通知</a>
+														
 													</li>
-													<!-- mega-menu end -->
+													<!-- menu end -->
+													<li>
+														<a href="" class="dropdown-toggle">私信</a>
+														
+													</li>
+													<!-- menu start -->
 													<li class="dropdown">
-														<a href="#" class="dropdown-toggle" data-toggle="dropdown">私信</a>
-														<ul class="dropdown-menu">
-															<li><a href="features-typography.html">Typography</a></li>
-															<li class="dropdown">
-																<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pricing tables</a>
-																<ul class="dropdown-menu">
-																	<li><a href="features-pricing-tables-1.html">Pricing Tables 1</a></li>
-																	<li><a href="features-pricing-tables-2.html">Pricing Tables 2</a></li>
-																	<li><a href="features-pricing-tables-3.html">Pricing Tables 3</a></li>
-																</ul>
-															</li>
-															<li><a href="features-backgrounds.html">Backgrounds</a></li>											
-															<li><a href="features-testimonials.html">Testimonials</a></li>
-															<li class="dropdown">
-																<a href="#" class="dropdown-toggle" data-toggle="dropdown">Icons</a>
-																<ul class="dropdown-menu">
-																	<li><a href="features-icons-fontawesome.html">Font Awesome Icons</a></li>
-																	<li><a href="features-icons-fontello.html">Fontello Icons</a></li>
-																	<li><a href="features-icons-glyphicons.html">Glyphicons Icons</a></li>
-																</ul>
-															</li>
-															<li class="dropdown">
-																<a href="#" class="dropdown-toggle" data-toggle="dropdown">Footer - Options</a>
-																<ul class="dropdown-menu">
-																	<li><a href="features-footer-1.html#footer">Footer 1 (Default)</a></li>
-																	<li><a href="features-footer-2.html#footer">Footer 2</a></li>
-																	<li><a href="features-footer-3.html#footer">Footer 3</a></li>
-																	<li><a href="features-footer-4.html#footer">Footer 4</a></li>
-																</ul>
-															</li>
-															<li class="dropdown">
-																<a href="#" class="dropdown-toggle" data-toggle="dropdown">Header - Options</a>
-																<ul class="dropdown-menu">
-																	<li><a href="features-header-1.html">Header - Layout 1 (Default)</a></li>
-																	<li><a href="features-header-2.html">Header - Layout 2</a></li>
-																	<li><a href="features-header-3.html">Header - Layout 3</a></li>
-																</ul>
-															</li>
-															<li><a href="features-grid.html">Grid System</a></li>
-														</ul>
-													</li>
-													<!-- mega-menu start -->
-													<li class="dropdown mega-menu">
 														<a href="#" class="dropdown-toggle" data-toggle="dropdown">个人管理</a>
 														<ul class="dropdown-menu">
-															<li>
-																<div class="row">
-																	<div class="col-sm-4 col-md-6">
-																		<h4>iDea - Powerful Bootstrap Theme</h4>
-																		<p>iDea is a Clean and Super Flexible Bootstrap Theme with many Features and Unlimited options.</p>
-																		<img src="images/section-image-1.png" alt="image-1">
-																	</div>
-																	<div class="col-sm-8 col-md-6">
-																		<h4>Components</h4>
-																		<div class="row">
-																			<div class="col-sm-6">
-																				<div class="divider"></div>
-																				<ul class="menu">
-																					<li><a href="components-tabs-and-pills.html"><i class="icon-right-open"></i>Tabs &amp; Pills</a></li>
-																					<li><a href="components-accordions.html"><i class="icon-right-open"></i>Accordions</a></li>
-																					<li><a href="components-social-icons.html"><i class="icon-right-open"></i>Social Icons</a></li>
-																					<li><a href="components-buttons.html"><i class="icon-right-open"></i>Buttons</a></li>
-																					<li><a href="components-forms.html"><i class="icon-right-open"></i>Forms</a></li>
-																					<li><a href="components-progress-bars.html"><i class="icon-right-open"></i>Progress bars</a></li>
-																					<li><a href="components-alerts-and-callouts.html"><i class="icon-right-open"></i>Alerts &amp; Callouts</a></li>
-																					<li><a href="components-content-sliders.html"><i class="icon-right-open"></i>Content Sliders</a></li>
-																				</ul>
-																			</div>
-																			<div class="col-sm-6">
-																				<div class="divider"></div>
-																				<ul class="menu">
-																					<li><a href="components-lightbox.html"><i class="icon-right-open"></i>Lightbox</a></li>
-																					<li><a href="components-icon-boxes.html"><i class="icon-right-open"></i>Icon Boxes</a></li>
-																					<li><a href="components-image-boxes.html"><i class="icon-right-open"></i>Image Boxes</a></li>
-																					<li><a href="components-video-and-audio.html"><i class="icon-right-open"></i>Video &amp; Audio</a></li>
-																					<li><a href="components-modals.html"><i class="icon-right-open"></i>Modals</a></li>
-																					<li><a href="components-animations.html"><i class="icon-right-open"></i>Animations</a></li>
-																					<li><a href="components-counters.html"><i class="icon-right-open"></i>Counters</a></li>
-																					<li><a href="components-tables.html"><i class="icon-right-open"></i>Tables</a></li>
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</li>
+															<div class="col-sm-8 col-md-6">
+															<h4><?php echo $username ?></h4>
+															<h6>@<?php echo $userid ?></h6>
+															<div class="divider"></div>
+															</div>
+															
+															<!--<li class="active"><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>-->
+															<li><a href="">我的主页</a></li>
+															<li><a href="">个人资料</a></li>
+															<li><a href="">我的关注</a></li>
+															<li><a href="">我的粉丝</a></li>
+															<li><a href="">个人设置</a></li>
+															<li><a href="logout.php">注销登录</a></li>
+															
 														</ul>
 													</li>
-													<!-- mega-menu end -->
-													<li class="dropdown">
-														<a href="portfolio-3col.html" class="dropdown-toggle" data-toggle="dropdown">Portfolio</a>
-														<ul class="dropdown-menu">
-															<li class="dropdown">
-																<a href="portfolio-3col.html" class="dropdown-toggle" data-toggle="dropdown">Portfolio - Style 1</a>
-																<ul class="dropdown-menu">
-																	<li><a href="portfolio-2col.html">Portfolio - 2 columns</a></li>
-																	<li><a href="portfolio-3col.html">Portfolio - 3 columns</a></li>
-																	<li><a href="portfolio-4col.html">Portfolio - 4 columns</a></li>
-																	<li><a href="portfolio-sidebar.html">Portfolio - With sidebar</a></li>
-																</ul>
-															</li>
-															<li class="dropdown">
-																<a href="portfolio-3col-2.html" class="dropdown-toggle" data-toggle="dropdown">Portfolio - Style 2</a>
-																<ul class="dropdown-menu">
-																	<li><a href="portfolio-2col-2.html">Portfolio - 2 columns</a></li>
-																	<li><a href="portfolio-3col-2.html">Portfolio - 3 columns</a></li>
-																	<li><a href="portfolio-4col-2.html">Portfolio - 4 columns</a></li>
-																	<li><a href="portfolio-sidebar-2.html">Portfolio - With sidebar</a></li>
-																</ul>
-															</li>
-															<li class="dropdown">
-																<a href="portfolio-3col-3.html" class="dropdown-toggle" data-toggle="dropdown">Portfolio - Style 3</a>
-																<ul class="dropdown-menu">
-																	<li><a href="portfolio-2col-3.html">Portfolio - 2 columns</a></li>
-																	<li><a href="portfolio-3col-3.html">Portfolio - 3 columns</a></li>
-																	<li><a href="portfolio-4col-3.html">Portfolio - 4 columns</a></li>
-																	<li><a href="portfolio-sidebar-3.html">Portfolio - With sidebar</a></li>
-																</ul>
-															</li>
-															<li><a href="portfolio-full.html">Portfolio - Full width</a></li>
-															<li><a href="portfolio-item.html">Portfolio single</a></li>
-															<li><a href="portfolio-item-2.html">Portfolio single 2</a></li>
-															<li><a href="portfolio-item-3.html">Portfolio single 3</a></li>
-														</ul>
-													</li>
-													<li class="dropdown">
-														<a href="shop-listing-3col.html" class="dropdown-toggle" data-toggle="dropdown">Shop</a>
-														<ul class="dropdown-menu">
-															<li><a href="shop-listing-3col.html">Shop - 3 Columns</a></li>
-															<li><a href="shop-listing-4col.html">Shop - 4 Columns</a></li>
-															<li><a href="shop-listing-sidebar.html">Shop - With Sidebar</a></li>
-															<li><a href="shop-product.html">Product</a></li>
-															<li><a href="shop-cart.html">Shopping Cart</a></li>
-															<li><a href="shop-checkout.html">Checkout Page - Step 1</a></li>
-															<li><a href="shop-checkout-payment.html">Checkout Page - Step 2</a></li>
-															<li><a href="shop-checkout-review.html">Checkout Page - Step 3</a></li>
-														</ul>
-													</li>
-													<li class="dropdown active">
-														<a href="blog-right-sidebar.html" class="dropdown-toggle" data-toggle="dropdown">Blog</a>
-														<ul class="dropdown-menu">
-															<li class="active"><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-															<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-															<li><a href="blog-no-sidebar.html">Blog No Sidebars</a></li>
-															<li><a href="blog-masonry.html">Blog Masonry</a></li>
-															<li><a href="blog-masonry-sidebar.html">Blog Masonry - Sidebar</a></li>
-															<li><a href="blog-timeline.html">Blog Timeline</a></li>
-															<li><a href="blog-post.html">Blog post</a></li>
-														</ul>
-													</li>
+													<!-- menu end -->
+													<?php
+													}
+													?>
+													
 												</ul>
 											</div>
 
@@ -602,7 +399,7 @@ if($islogin==True)
 $count_weibo_index = 0;
 //查询文章数量
 $sql="";
-if($islogin==True)
+if($islogin==True AND False)
 $sql = "
 SELECT COUNT(WEIBO.WEIBOID) 
 FROM WEIBO,FOLLOWS 
@@ -640,7 +437,7 @@ $weibo_startid=$page_num * $weibocount_peer_page;
 $weibo_endid=$weibo_startid + $weibocount_peer_page;
 
 //查找微博信息
-if($islogin==True)
+if($islogin==True AND False)
 $sql = "
 SELECT WEIBOID,WEIBO.USERID,USERNAME,CONTENT,TIME FROM WEIBO,FOLLOWS,USERINFO 
 WHERE (WEIBO.USERID = '" . $userid . "'  OR (FOLLOWS.USERID0='" . $userid . "' AND FOLLOWS.USERID1 = WEIBO.USERID)) AND WEIBO.USERID = USERINFO.USERID
@@ -650,6 +447,7 @@ LIMIT ".$weibo_startid.",".$weibo_endid.";
 else
 $sql = "
 SELECT WEIBOID,WEIBO.USERID,USERNAME,CONTENT,TIME FROM WEIBO,FOLLOWS,USERINFO 
+WHERE WEIBO.USERID=USERINFO.USERID
 ORDER BY TIME DESC 
 LIMIT ".$weibo_startid.",".$weibo_endid.";
 ";
@@ -678,7 +476,7 @@ while($i_weibo < $weibocount_peer_page && $row = mysqli_fetch_array( $r ) )
 										<h5><div class="testimonial-info-1"><?php echo $weibo_time ?></div></h5>
 										<p><?php echo $weibo_content ?></p>
 										
-										<img src="images/logo_red.png">
+										<!--<img src="images/logo_red.png">-->
 										<i class="fa fa-heart-o pr-5"><a href="#"> 赞(2) </a></i>
 										<!--<i class="fa fa-heart pr-5"><a href="#"> 取消赞(2) </a></i>-->
 										<i class="fa fa-comments-o pr-5"><a href="#"> 评论(2) </a></i>
@@ -691,6 +489,10 @@ while($i_weibo < $weibocount_peer_page && $row = mysqli_fetch_array( $r ) )
 										<?php
 										}
 										?>
+										<form role="form" id="dw_post" action="post.php?action=comment&weibo_id=<?php echo $weibo_id ?>&response_id=0" method="post" accept-charset="utf-8">
+											<textarea id="textarea_comment" name="weibo_comment" class="form-control" rows="1"></textarea>
+											<button id="submit_comment" type="submit" class="btn btn-default">评论</button>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -831,7 +633,7 @@ require 'includes/pagination.php';
 		<script>
 			function func_login()
 			{
-				var input_pswdbox = document.getElementById(\'pswdbox\')
+				var input_pswdbox = document.getElementById('pswdbox')
 				var passwd = input_pswdbox.value
 				var passwd_md5 = MD5(passwd)
 				input_pswdbox.value = passwd_md5

@@ -47,14 +47,17 @@ if($islogin==True){
 		//评论微博
 		$weibo_comment='';
 		$weibo_id='';
-		if(empty($_POST['weibo_comment']) || empty($_POST['weibo_id'])|| empty($_POST['response_id']))
+		if(empty($_POST['weibo_comment']) || empty($_GET['weibo_id']))
 		{
 			echo'<script> location.replace (".") </script>'; 
 			exit();
 		}
 		$weibo_comment = $_POST['weibo_comment'];
-		$weibo_id = $_POST['weibo_id'];
-		$response_id = $_POST['response_id'];
+		$weibo_id = $_GET['weibo_id'];
+		$response_id = 0;
+		if(!empty($_GET['response_id']))
+			$response_id = $_GET['response_id'];
+		
 		//发布微博
 		$sql = "
 		INSERT INTO COMMENTS(WEIBOID,CORR_ID,USERID,CONTENT,TIME) VALUES('" . $weibo_id . "','" . $response_id . "','" . $userid . "','" . $weibo_comment . "',NOW());
@@ -84,12 +87,15 @@ if($islogin==True){
 		$weibo_id = $_GET['weibo_id'];
 		
 		$sql = "
-		DELETE FROM COMMENTS WHERE WEIBOID=" . $weibo_id . ";
+		DELETE FROM COMMENTS WHERE WEIBOID=(
+		SELECT WEIBOID FROM WEIBO
+		WHERE WEIBOID=" . $weibo_id . " AND USERID='" . $userid . "'
+		);
 		";
 		$r = mysqli_query($con,$sql);
 		
 		$sql = "
-		DELETE FROM WEIBO WHERE WEIBOID=" . $weibo_id . ";
+		DELETE FROM WEIBO WHERE WEIBOID=" . $weibo_id . " AND USERID='" . $userid . "';
 		";
 		$r = mysqli_query($con,$sql);
 		
@@ -130,6 +136,18 @@ if($islogin==True){
 			//echo '评论失败';
 			echo '<script> alert("删除失败 !"); location.replace (".") </script>';  
 		}
+	}
+	else if($_GET["action"] == 'like')
+	{
+		//喜欢
+	}
+	else if($_GET["action"] == 'unlike')
+	{
+		//取消喜欢
+	}
+	else if($_GET["action"] == 'forward')
+	{
+		//转发
 	}
 }
 else
