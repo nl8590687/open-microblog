@@ -3,13 +3,13 @@
 require 'includes/sqlmng.php';
 $weburl='weibo_ailemon_wang';
 
-$con = mysqli_connect($host,$username,$pswd);
+$con = mysqli_connect($sql_host,$sql_username,$sql_pswd);
 mysqli_set_charset($con, 'utf8');
 if (!$con)
 {
   die('Could not connect: ' . mysqli_error());
 }
-
+mysqli_set_charset($con, 'utf8');
 //选取数据库 open_microblog
 mysqli_select_db($con,"open_microblog");
 
@@ -19,21 +19,59 @@ $islogin = False;
 
 $uPwd='';
 $username = "UserName";
-$userid = "userid";
+$userid = 'userid';
 
-// 如果cookie存在，那么用户已经登陆
-if (!empty($_COOKIE[$weburl.'_userid'])&&!empty($_COOKIE[$weburl.'_password']))
-{
-	$userid=$_COOKIE[$weburl.'_userid'];
-	$uPwd=$_COOKIE[$weburl.'_password'];
-	
-	$islogin = True;
-}
-
+require 'includes/checklogin.php';
 
 $count_weibo = 16;
 $count_following = 9;
 $count_follower = 12;
+
+if($islogin==True)
+{
+	//查询用户名
+	$sql = "
+	SELECT USERNAME FROM USERINFO WHERE USERID='" . $userid . "';
+	";
+	$r = mysqli_query($con,$sql);
+	while( $row = mysqli_fetch_array( $r ) )
+	{
+		$username = $row["USERNAME"];
+		//echo $username;
+	}
+	
+	//获取粉丝数
+	$sql = "
+	SELECT COUNT(USERID0) COUNT_FOLLOWERS FROM FOLLOWS WHERE USERID1='" . $userid . "';
+	";
+	$r = mysqli_query($con,$sql);
+	while( $row = mysqli_fetch_array( $r ) )
+	{
+		$count_follower = $row["COUNT_FOLLOWERS"];
+	}
+	
+	//获取关注数
+	$sql = "
+	SELECT COUNT(USERID1) COUNT_FOLLOWING FROM FOLLOWS WHERE USERID0='" . $userid . "';
+	";
+	$r = mysqli_query($con,$sql);
+	while( $row = mysqli_fetch_array( $r ) )
+	{
+		$count_following = $row["COUNT_FOLLOWING"];
+	}
+	
+	//获取微博数
+	$sql = "
+	SELECT COUNT(WEIBOID) COUNT_WEIBO FROM WEIBO WHERE USERID='" . $userid . "';
+	";
+	$r = mysqli_query($con,$sql);
+	while( $row = mysqli_fetch_array( $r ) )
+	{
+		$count_weibo = $row["COUNT_WEIBO"];
+	}
+}
+
+
 
 ?>
 
@@ -157,14 +195,14 @@ $count_follower = 12;
 										</ul>
 									</div>
 									<?php
-									if($islogin==true)
+									if($islogin==False)
 									{
 									?>
 									<div class="btn-group dropdown">
 										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login</button>
 										<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
 											<li>
-												<form class="login-form" id="dw__login" action="login.jsp" method="post" accept-charset="utf-8">
+												<form class="login-form" id="dw__login" action="login.php" method="post" accept-charset="utf-8">
 													<div class="form-group has-feedback">
 														<label class="control-label">UserID</label>
 														<input id="uidbox" name="uID" type="text" class="form-control" placeholder="">
@@ -198,7 +236,7 @@ $count_follower = 12;
 									{
 									?>
 									<div class="btn-group dropdown">
-										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Cart (8)</button>
+										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $username ?></button>
 										<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
 											<li>
 												<table class="table table-hover">
@@ -553,17 +591,81 @@ $count_follower = 12;
 						<!-- ================ -->
 						<div class="main col-md-8">
 							
-							<form role="form" id="dw_post" action="post.jsp" method="post" accept-charset="utf-8">
+							<form role="form" id="dw_post" action="post.php" method="post" accept-charset="utf-8">
 								<label>请输入要发布的微博内容</label>
 								<textarea id="textarea_weibo" name="weibo_content" class="form-control" rows="3"></textarea>
 								<button id="submit_weibo" type="submit" class="btn btn-default">发布</button>
 							</form>
 							<div class="separator-2"></div>
-							<?php
+<?php
 							
-							for($i=0;$i<10;$i++)
-							{
-							?>
+$count_weibo_index = 0;
+//查询文章数量
+$sql="";
+if($islogin==True)
+$sql = "
+SELECT COUNT(WEIBO.WEIBOID) 
+FROM WEIBO,FOLLOWS 
+WHERE WEIBO.USERID='" . $userid . "' OR (FOLLOWS.USERID0='" . $userid . "' AND FOLLOWS.USERID1 = WEIBO.USERID) ;
+";
+else
+$sql="
+SELECT COUNT(WEIBO.WEIBOID) 
+FROM WEIBO;
+";
+
+$r = mysqli_query($con,$sql);
+
+while($row = mysqli_fetch_array( $r ) )
+{
+	$count_weibo_index = intval($row["COUNT(WEIBO.WEIBOID)"]);
+}
+
+//每页显示的文章数
+$weibocount_peer_page = 10;
+//计算微博的页数
+$count_page= intval($count_weibo_index / $weibocount_peer_page);
+
+if($count_weibo_index % $weibocount_peer_page >= 1)
+	$count_page= $count_page + 1;
+
+//设置页面的页面号，默认为第一页，即0
+$page_num = 0;
+if(!empty($_GET['page']))
+{
+	$page_num = intval($_GET['page']) - 1;
+}
+
+$weibo_startid=$page_num * $weibocount_peer_page;
+$weibo_endid=$weibo_startid + $weibocount_peer_page;
+
+//查找微博信息
+if($islogin==True)
+$sql = "
+SELECT WEIBOID,WEIBO.USERID,USERNAME,CONTENT,TIME FROM WEIBO,FOLLOWS,USERINFO 
+WHERE (WEIBO.USERID = '" . $userid . "'  OR (FOLLOWS.USERID0='" . $userid . "' AND FOLLOWS.USERID1 = WEIBO.USERID)) AND WEIBO.USERID = USERINFO.USERID
+ORDER BY TIME DESC 
+LIMIT ".$weibo_startid.",".$weibo_endid.";
+";
+else
+$sql = "
+SELECT WEIBOID,WEIBO.USERID,USERNAME,CONTENT,TIME FROM WEIBO,FOLLOWS,USERINFO 
+ORDER BY TIME DESC 
+LIMIT ".$weibo_startid.",".$weibo_endid.";
+";
+
+$r = mysqli_query($con,$sql);
+
+$i_weibo=0;
+while($i_weibo < $weibocount_peer_page && $row = mysqli_fetch_array( $r ) )
+{
+	$weibo_id = $row["WEIBOID"];
+	$user_id = $row["USERID"];
+	$user_name = $row["USERNAME"];
+	$weibo_content = $row["CONTENT"];
+	$weibo_time = $row["TIME"];
+	
+?>
 							<div class="space-bottom"></div>
 							<div class="well">
 								<div class="testimonial clearfix">
@@ -571,10 +673,10 @@ $count_follower = 12;
 										<img src="images/testimonial-2.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
 									</div>
 									<div class="testimonial-body">
-										<h4 class="title">UserName</h4>
-										<h6>@userid</h6>
-										<h5><div class="testimonial-info-1">2018-01-01 00:00:00</div></h5>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex eveniet, nihil repellat temporibus! Vitae veniam neque atque autem vel fugit aspernatur perferendis sunt, voluptatum debitis! Nemo aut, itaque officiis assumenda.</p>
+										<h4 class="title"><?php echo $user_name ?></h4>
+										<h6>@<?php echo $user_id ?></h6>
+										<h5><div class="testimonial-info-1"><?php echo $weibo_time ?></div></h5>
+										<p><?php echo $weibo_content ?></p>
 										
 										<img src="images/logo_red.png">
 										<i class="fa fa-heart-o pr-5"><a href="#"> 赞(2) </a></i>
@@ -582,27 +684,29 @@ $count_follower = 12;
 										<i class="fa fa-comments-o pr-5"><a href="#"> 评论(2) </a></i>
 										<i class="fa fa-retweet pr-5"><a href="#"> 转发(2) </a></i>
 										<i class="fa fa-envelope-o pr-5"><a href="#"> 私信 </a></i>
-										<!--<i class="fa fa-trash-o pr-5"><a href="#"> 删除 </a></i>-->
+										<?php 
+										if($user_id == $userid){
+										?>
+										<i class="fa fa-trash-o pr-5"><a href="post.php?action=delweibo&weibo_id=<?php echo $weibo_id ?>"> 删除 </a></i>
+										<?php
+										}
+										?>
 									</div>
 								</div>
 							</div>
 							
-							<?php
-							} 
-							?>
+<?php
+$i_weibo ++;
+} 
+
+?>
 
 							
 
 							<!-- pagination start -->
-							<ul class="pagination">
-								<li><a href="#"><<</a></li>
-								<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">>></a></li>
-							</ul>
+<?php 
+require 'includes/pagination.php';
+?>
 							<!-- pagination end -->
 
 						</div>
@@ -611,13 +715,15 @@ $count_follower = 12;
 						<!-- sidebar start -->
 						<aside class="col-md-3 col-md-offset-1">
 							<div class="sidebar">
-								
+								<?php
+								if($islogin==True){
+								?>
 								<div class="block clearfix">
 									<div class="col-md-12">
 										<div class="testimonial clearfix">
 											<img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
 											<div class="testimonial-body">
-												<h2 class="title"><?php $username ?></h2>
+												<h2 class="title"><?php echo $username ?></h2>
 												<div class="testimonial-info-1">@<?php echo $userid ?></div>
 												<div class="testimonial-info-2">微博 <?php echo $count_weibo ?> 关注 <?php echo $count_following ?> 粉丝 <?php echo $count_follower ?></div>
 												<hr>
@@ -625,7 +731,9 @@ $count_follower = 12;
 										</div>
 									</div>
 								</div>
-								
+								<?php
+								}
+								?>
 								<div class="block clearfix">
 									<form role="search">
 										<div class="form-group has-feedback">

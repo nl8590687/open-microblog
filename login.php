@@ -26,12 +26,12 @@ if (!empty($_COOKIE[$weburl.'_userid'])&&!empty($_COOKIE[$weburl.'_password']))
 
 
 
-$con = mysqli_connect($host,$username,$pswd);
+$con = mysqli_connect($sql_host,$sql_username,$sql_pswd);
 if (!$con)
 {
   die('Could not connect: ' . mysqli_error());
 }
-
+mysqli_set_charset($con, 'utf8');
 //选取数据库 open_microblog
 mysqli_select_db($con,"open_microblog");
 
@@ -46,7 +46,7 @@ if(!empty($_POST['uID'])&& !empty($_POST['uPwd']))
 	$uPwd=strtoupper($uPwd);
 	$uPwd=md5('weibouser' . $uPwd . 'pwd');    //加盐
 	
-	echo $uPwd;
+	//echo $uPwd;
 	
 	$sql = "
 	SELECT * FROM USERINFO
@@ -77,7 +77,7 @@ if(!empty($_POST['uID'])&& !empty($_POST['uPwd']))
 		{
 			//设置cookie
 			
-			setcookie($weburl.'_username',$GLOBALS['uName'],time()+2*7*24*3600,'/');
+			setcookie($weburl.'_userid',$userid,time()+2*7*24*3600,'/');
 			//setcookie($weburl.'_password',md5(uniqid($GLOBALS['uPwd'])),time()+2*7*24*3600,'/');
 			//setcookie($weburl.'_password',$GLOBALS['uPwd'],time()+2*7*24*3600,'/');
 			setcookie($weburl.'_password',strtoupper($uPwd),time()+2*7*24*3600,'/');

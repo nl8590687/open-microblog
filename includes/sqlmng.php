@@ -1,9 +1,9 @@
 <?php
 
-$host='localhost';
+$sql_host='localhost';
 
-$username='root';
+$sql_username='root';
 
-$pswd='123456';
+$sql_pswd='123456';
 
 ?>
