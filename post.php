@@ -34,7 +34,7 @@ if($islogin==True){
 		if ($r)
 		{
 			//echo '发布成功';
-			echo '<script> alert("发布成功 !"); location.replace (".") </script>'; 
+			echo '<script> location.replace (".") </script>'; 
 		}
 		else
 		{
@@ -67,7 +67,7 @@ if($islogin==True){
 		if ($r)
 		{
 			//echo '评论成功';
-			echo '<script> alert("评论成功 !"); location.replace (".") </script>'; 
+			echo '<script> location.replace (".") </script>'; 
 		}
 		else
 		{
@@ -115,12 +115,12 @@ if($islogin==True){
 	{
 		//删除评论
 		$response_id = '';
-		if(empty($_POST['response_id']))
+		if(empty($_GET['response_id']))
 		{
 			echo'<script> location.replace (".") </script>'; 
 			exit();
 		}
-		$response_id = $_POST['response_id'];
+		$response_id = $_GET['response_id'];
 		$sql = "
 		DELETE FROM COMMENTS WHERE CID='" . $response_id . "';
 		";
@@ -140,10 +140,56 @@ if($islogin==True){
 	else if($_GET["action"] == 'like')
 	{
 		//喜欢
+		$weibo_id = '';
+		if(empty($_GET['weibo_id']))
+		{
+			echo'<script> location.replace (".") </script>'; 
+			exit();
+		}
+		$weibo_id = $_GET['weibo_id'];
+		$sql = "
+		INSERT INTO LIKES VALUES('" . $userid . "'," . $weibo_id . ");
+		";
+		$r = mysqli_query($con,$sql);
+		
+		echo '<script> location.replace (".") </script>'; 
+		if ($r)
+		{
+			//echo '点赞成功';
+			//echo '<script> alert("点赞成功 !"); location.replace (".") </script>'; 
+		}
+		else
+		{
+			//echo '点赞失败';
+			//echo '<script> alert("点赞失败 !"); location.replace (".") </script>';  
+		}
 	}
 	else if($_GET["action"] == 'unlike')
 	{
 		//取消喜欢
+		$weibo_id = '';
+		if(empty($_GET['weibo_id']))
+		{
+			echo'<script> location.replace (".") </script>'; 
+			exit();
+		}
+		$weibo_id = $_GET['weibo_id'];
+		$sql = "
+		DELETE FROM LIKES WHERE USERID='" . $userid . "' AND WEIBOID=" . $weibo_id . ";
+		";
+		$r = mysqli_query($con,$sql);
+		
+		echo '<script> location.replace (".") </script>';
+		if ($r)
+		{
+			//echo '取消赞成功';
+			//echo '<script> alert("取消赞成功 !"); location.replace (".") </script>'; 
+		}
+		else
+		{
+			//echo '取消赞失败';
+			//echo '<script> alert("取消赞失败 !"); location.replace (".") </script>';  
+		}
 	}
 	else if($_GET["action"] == 'forward')
 	{

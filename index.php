@@ -142,33 +142,7 @@ if($islogin==True)
 
 							<!-- header-top-first start -->
 							<!-- ================ -->
-							<div class="header-top-first clearfix">
-								<ul class="social-links clearfix hidden-xs">
-									<li class="twitter"><a target="_blank" href="#"><i class="fa fa-twitter"></i></a></li>
-									<li class="skype"><a target="_blank" href="#"><i class="fa fa-skype"></i></a></li>
-									<li class="linkedin"><a target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li class="googleplus"><a target="_blank" href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li class="youtube"><a target="_blank" href="#"><i class="fa fa-youtube-play"></i></a></li>
-									<li class="flickr"><a target="_blank" href="#"><i class="fa fa-flickr"></i></a></li>
-									<li class="facebook"><a target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-									<li class="pinterest"><a target="_blank" href="#"><i class="fa fa-pinterest"></i></a></li>
-								</ul>
-								<div class="social-links hidden-lg hidden-md hidden-sm">
-									<div class="btn-group dropdown">
-										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
-										<ul class="dropdown-menu dropdown-animation">
-											<li class="twitter"><a target="_blank" href="#"><i class="fa fa-twitter"></i></a></li>
-											<li class="skype"><a target="_blank" href="#"><i class="fa fa-skype"></i></a></li>
-											<li class="linkedin"><a target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li class="googleplus"><a target="_blank" href="#"><i class="fa fa-google-plus"></i></a></li>
-											<li class="youtube"><a target="_blank" href="#"><i class="fa fa-youtube-play"></i></a></li>
-											<li class="flickr"><a target="_blank" href="#"><i class="fa fa-flickr"></i></a></li>
-											<li class="facebook"><a target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-											<li class="pinterest"><a target="_blank" href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							
 							<!-- header-top-first end -->
 
 						</div>
@@ -276,12 +250,12 @@ if($islogin==True)
 
 								<!-- logo -->
 								<div class="logo">
-									<a href="index.html"><img id="logo" src="images/logo_red.png" alt="iDea"></a>
+									<a href="."><img id="logo" src="images/logo_blue.png" alt="iDea"></a>
 								</div>
 
 								<!-- name-and-slogan -->
 								<div class="site-slogan">
-									Clean &amp; Powerful Bootstrap Theme
+									 这是一个微博系统
 								</div>
 
 							</div>
@@ -463,6 +437,38 @@ while($i_weibo < $weibocount_peer_page && $row = mysqli_fetch_array( $r ) )
 	$weibo_content = $row["CONTENT"];
 	$weibo_time = $row["TIME"];
 	
+	//查询评论数量
+	$sql_2 = "
+	SELECT COUNT(CID) FROM COMMENTS
+	WHERE WEIBOID=" . $weibo_id . ";
+	";
+	$r_2 = mysqli_query($con,$sql_2);
+	$count_comment = 0;
+	while($row_2 = mysqli_fetch_array( $r_2 ) ){
+		$count_comment = $row_2["COUNT(CID)"];
+	}
+	
+	//查询点赞数量
+	$sql_2 = "
+	SELECT COUNT(USERID) FROM LIKES
+	WHERE WEIBOID=" . $weibo_id . ";
+	";
+	$r_2 = mysqli_query($con,$sql_2);
+	$count_like = 0;
+	while($row_2 = mysqli_fetch_array( $r_2 ) ){
+		$count_like = $row_2["COUNT(USERID)"];
+	}
+	
+	//查询某人是否给某条微博点过赞
+	$sql_2 = "
+	SELECT COUNT(USERID) FROM LIKES
+	WHERE WEIBOID=" . $weibo_id . " AND USERID='" . $userid . "';
+	";
+	$r_2 = mysqli_query($con,$sql_2);
+	$islike = 0;
+	while($row_2 = mysqli_fetch_array( $r_2 ) ){
+		$islike = $row_2["COUNT(USERID)"];
+	}
 ?>
 							<div class="space-bottom"></div>
 							<div class="well">
@@ -477,21 +483,70 @@ while($i_weibo < $weibocount_peer_page && $row = mysqli_fetch_array( $r ) )
 										<p><?php echo $weibo_content ?></p>
 										
 										<!--<img src="images/logo_red.png">-->
-										<i class="fa fa-heart-o pr-5"><a href="#"> 赞(2) </a></i>
-										<!--<i class="fa fa-heart pr-5"><a href="#"> 取消赞(2) </a></i>-->
-										<i class="fa fa-comments-o pr-5"><a href="#"> 评论(2) </a></i>
-										<i class="fa fa-retweet pr-5"><a href="#"> 转发(2) </a></i>
-										<i class="fa fa-envelope-o pr-5"><a href="#"> 私信 </a></i>
+<?php 
+if($islike=='0')
+{
+?>
+										<a href="post.php?action=like&weibo_id=<?php echo $weibo_id ?>"><i class="fa fa-heart-o pr-5"> 赞(<?php echo $count_like ?>) </i></a>
+<?php 
+}
+else
+{
+?>
+										<a href="post.php?action=unlike&weibo_id=<?php echo $weibo_id ?>"><i class="fa fa-heart pr-5"> 取消赞(<?php echo $count_like ?>) </i></a>
+<?php 
+}
+?>
+										<a href="#"><i class="fa fa-comments-o pr-5"> 评论(<?php echo $count_comment ?>) </i></a>
+										<a href="#"><i class="fa fa-retweet pr-5"> 转发 </i></a>
+										<a href="#"><i class="fa fa-envelope-o pr-5"> 私信 </i></a>
 										<?php 
 										if($user_id == $userid){
 										?>
-										<i class="fa fa-trash-o pr-5"><a href="post.php?action=delweibo&weibo_id=<?php echo $weibo_id ?>"> 删除 </a></i>
+										<a href="post.php?action=delweibo&weibo_id=<?php echo $weibo_id ?>"><i class="fa fa-trash-o pr-5"> 删除 </i></a>
 										<?php
 										}
 										?>
 										<form role="form" id="dw_post" action="post.php?action=comment&weibo_id=<?php echo $weibo_id ?>&response_id=0" method="post" accept-charset="utf-8">
-											<textarea id="textarea_comment" name="weibo_comment" class="form-control" rows="1"></textarea>
+											<textarea id="textarea_comment" name="weibo_comment" class="form-control" rows="2"></textarea>
 											<button id="submit_comment" type="submit" class="btn btn-default">评论</button>
+											<table class="table table-striped">
+												<tbody>
+<?php
+$sql_comment = "
+SELECT CID,CORR_ID,COMMENTS.USERID,USERNAME,COMMENTS.CONTENT,COMMENTS.TIME FROM COMMENTS,USERINFO 
+WHERE COMMENTS.USERID=USERINFO.USERID AND WEIBOID=" . $weibo_id . "
+ORDER BY TIME;
+";
+
+$r_comment = mysqli_query($con,$sql_comment);
+
+while($row_comment = mysqli_fetch_array( $r_comment ) )
+{
+	$comment_cid = $row_comment["CID"];
+	$comment_corrid = $row_comment["CORR_ID"];
+	$comment_userid = $row_comment["USERID"];
+	$comment_username = $row_comment["USERNAME"];
+	$comment_content = $row_comment["CONTENT"];
+	$comment_time = $row_comment["TIME"];
+
+?>
+													<tr>
+														<td><strong><?php echo $comment_username ?></strong> <a href="">@<?php echo $comment_userid ?></a></td>
+														<!--<td>2018-01-01</td>-->
+														<td><?php echo $comment_content ?>
+															</br><h6><?php echo $comment_time ?></h6>
+															</br>
+																<a href="#"><i class="fa fa-reply pr-5"></i>回复</a> &nbsp;
+																<a href="#"><i class="fa fa-envelope-o pr-5"> 私信</i></a>&nbsp;
+																<a href="post.php?action=delcomm&response_id=<?php echo $comment_cid ?>"><i class="fa fa-trash-o pr-5"></i>删除</a> 
+														</td>
+													</tr>
+<?php
+}
+?>
+												</tbody>
+											</table>
 										</form>
 									</div>
 								</div>
