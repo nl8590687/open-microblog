@@ -82,9 +82,9 @@ if($islogin==True)
 <!--<![endif]-->
 
 	<head>
-		<meta charset=\"utf-8\">
+		<meta charset="utf-8">
 		<title>Open MicroBlog</title>
-		<meta name="description\" content="iDea a Bootstrap-based, Responsive HTML5 Template">
+		<meta name="description" content="iDea a Bootstrap-based, Responsive HTML5 Template">
 		<meta name="author" content="htmlcoder.me">
 
 		<!-- Mobile Meta -->
