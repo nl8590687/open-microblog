@@ -115,14 +115,15 @@ if($islogin==True){
 	{
 		//删除评论
 		$response_id = '';
-		if(empty($_GET['response_id']))
+		if(empty($_GET['response_id']) || empty($_GET['comment_userid']))
 		{
 			echo'<script> location.replace (".") </script>'; 
 			exit();
 		}
 		$response_id = $_GET['response_id'];
+		$comment_userid = $_GET['comment_userid'];
 		$sql = "
-		DELETE FROM COMMENTS WHERE CID='" . $response_id . "';
+		DELETE FROM COMMENTS WHERE CID='" . $response_id . "' AND (USERID='" . $userid . "' OR USERID='" . $comment_userid . "');
 		";
 		$r = mysqli_query($con,$sql);
 		

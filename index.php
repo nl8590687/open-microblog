@@ -539,7 +539,13 @@ while($row_comment = mysqli_fetch_array( $r_comment ) )
 															</br>
 																<a href="#"><i class="fa fa-reply pr-5"></i>回复</a> &nbsp;
 																<a href="#"><i class="fa fa-envelope-o pr-5"> 私信</i></a>&nbsp;
-																<a href="post.php?action=delcomm&response_id=<?php echo $comment_cid ?>"><i class="fa fa-trash-o pr-5"></i>删除</a> 
+<?php 
+if($user_id == $userid || $comment_userid == $userid){
+?>
+																<a href="post.php?action=delcomm&response_id=<?php echo $comment_cid ?>&comment_userid=<?php echo $comment_userid ?>"><i class="fa fa-trash-o pr-5"></i>删除</a> 
+<?php 
+}
+?>
 														</td>
 													</tr>
 <?php
