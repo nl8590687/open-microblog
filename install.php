@@ -1,6 +1,6 @@
 <?php
 require 'includes/sqlmng.php';
-$con = mysqli_connect($host,$username,$pswd);
+$con = mysqli_connect($sql_host,$sql_username,$sql_pswd);
 mysqli_set_charset($con, 'utf8');
 if (!$con)
 {
